@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# BookFinderApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+BookFinderApp es una aplicación de React para buscar libros utilizando la API de Google Books. Los usuarios pueden seleccionar categorías, filtrar resultados por idioma y ver más detalles de cada libro, incluyendo un enlace a Amazon para posibles compras. La aplicación también cuenta con scroll infinito para cargar más resultados automáticamente.
 
-## Available Scripts
+## Características
 
-In the project directory, you can run:
+- **Selección de Categorías:** Filtra los resultados de búsqueda por categorías como Ficción, Ciencia, Historia y Tecnología.
+- **Filtro por Idioma:** Permite a los usuarios filtrar los resultados según el idioma deseado (Español, Inglés, Francés, Alemán).
+- **Scroll Infinito:** Carga automática de más libros al llegar al final de la página.
+- **Enlaces a Amazon:** Incluye un enlace en cada libro para buscarlo en Amazon con el Amazon Tag configurado.
 
-### `npm start`
+## Requisitos Previos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Antes de iniciar la aplicación, asegúrate de contar con:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js y npm instalados.
+- Una cuenta en [Google Cloud](https://console.cloud.google.com/) para obtener una API Key de Google Books.
+- Un Amazon Tag (afiliado) para incluir en los enlaces de Amazon.
 
-### `npm test`
+## Instalación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clona el repositorio:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/tuusuario/BookFinderApp.git
+   cd BookFinderApp
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Instala las dependencias:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Configura las variables de entorno:
 
-### `npm run eject`
+   Crea un archivo `.env` en el directorio raíz y agrega tu API Key de Google y Amazon Tag:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```env
+   REACT_APP_API_KEY=tu_google_books_api_key
+   REACT_APP_AMAZON_TAG=tu_amazon_tag
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Uso
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Ejecuta la aplicación en modo de desarrollo:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Estructura de Archivos
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `src/Card.js` y `src/Button.jsx`: Componentes reutilizables para la interfaz de usuario.
+- `src/Alert.jsx`: Muestra mensajes de error cuando la API falla o hay problemas en la búsqueda.
+- `src/App.js`: Archivo principal que contiene la lógica de búsqueda, carga de libros y renderización de la aplicación.
 
-### Code Splitting
+## Funcionalidades Principales
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Descubrir Categorías Dinámicamente**: La aplicación usa `discoverCategories()` para descubrir categorías populares según la búsqueda.
+- **Cargar Más Resultados**: La función `loadMoreBooks()` permite cargar más libros cuando se detecta que el usuario ha llegado al final de la página.
+- **Interfaz Limpia y Fácil de Usar**: Gracias a los componentes `Card`, `Button`, y `Alert`, la aplicación presenta un diseño limpio y profesional.
 
-### Analyzing the Bundle Size
+## Dependencias
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **React**: Biblioteca de JavaScript para construir interfaces de usuario.
+- **Lucide-React**: Iconos SVG para mejorar la experiencia visual.
+- **Google Books API**: Fuente de datos de libros.
 
-### Making a Progressive Web App
+## Personalización
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Puedes personalizar las categorías iniciales en `INITIAL_CATEGORIES` dentro de `App.js`, o modificar los estilos CSS según tus necesidades.
 
-### Advanced Configuration
+## Contribuir
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Las contribuciones son bienvenidas. Si encuentras un problema o tienes una mejora, abre un issue o envía un pull request.
 
-### Deployment
+## Licencia
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Este proyecto está bajo la Licencia MIT.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
